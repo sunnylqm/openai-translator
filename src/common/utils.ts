@@ -2,7 +2,7 @@
 import { createParser } from 'eventsource-parser'
 import { IBrowser, ISettings } from './types'
 import { getUniversalFetch } from './universal-fetch'
-import csvtojson from 'csvtojson';
+import csvtojson from 'csvtojson'
 import { Action } from './internal-services/db'
 
 export const defaultAPIURL = 'https://api.openai.com'
@@ -203,8 +203,6 @@ export async function exportToCsv<T extends Action>(filename: string, rows: T[])
     }
 }
 
-
-
 export async function csvToActions(file: File): Promise<Action[]> {
     try {
         // 读取文件内容
@@ -215,17 +213,17 @@ export async function csvToActions(file: File): Promise<Action[]> {
         const parsedData = await csvtojson().fromString(cleanContent)
         // 简单验证以检查parsedData是否为动作数组
         if (!Array.isArray(parsedData)) {
-            throw new Error('Invalid file format: Expected an array of actions');
+            throw new Error('Invalid file format: Expected an array of actions')
         }
 
-        return parsedData.map(action => ({
+        return parsedData.map((action) => ({
             ...action,
             // 如果有需要特殊处理的字段，可以在此处进行映射
-            id: action.id || action.ufeffid, 
+            id: action.id || action.ufeffid,
             idx: action.idx || action.ufeffidx,
-        }));
+        }))
     } catch (error) {
-        console.error('Error importing actions:', error);
+        console.error('Error importing actions:', error)
         // 可选地，向用户显示错误消息
         return []
     }

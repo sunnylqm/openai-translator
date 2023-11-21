@@ -139,4 +139,3 @@ browser.commands.onCommand.addListener(async (command) => {
         }
     }
 })
-

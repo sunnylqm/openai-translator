@@ -765,17 +765,16 @@ function InnerTranslator(props: IInnerTranslatorProps) {
 
     const translatedLanguageDirection = useMemo(() => getLangConfig(sourceLang).direction, [sourceLang])
 
-
     const addToAnki = async (deckname: string, front: string, back: any) => {
         const connected = await isConnected()
-    
+
         if (connected) {
             try {
                 await addNewNote(deckname, front, back)
                 setActionStr('Note added successfully!')
             } catch (error) {
                 console.error('Error adding note:', error)
-                setErrorMessage( `Error: ${error}`)
+                setErrorMessage(`Error: ${error}`)
             }
         } else {
             console.log('Not connected')
@@ -1232,7 +1231,7 @@ function InnerTranslator(props: IInnerTranslatorProps) {
                 'yetone-dark': themeType === 'dark',
             })}
             style={{
-                minHeight:  '600px',
+                minHeight: '600px',
                 background: theme.colors.backgroundPrimary,
                 paddingBottom: showSettings ? '0px' : '30px',
             }}
@@ -1767,7 +1766,6 @@ function InnerTranslator(props: IInnerTranslatorProps) {
                                                 ) : (
                                                     translatedLines.map((line, i) => {
                                                         return (
-                                                            
                                                             <p className={styles.paragraph} key={`p-${i}`}>
                                                                 {isWordMode && i === 0 ? (
                                                                     <div

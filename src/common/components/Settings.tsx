@@ -205,7 +205,6 @@ const useTTSSettingsStyles = createUseStyles({
     }),
 })
 
-
 interface TTSVoicesSettingsProps {
     value?: ISettings['tts']
     onChange?: (value: ISettings['tts']) => void
@@ -1039,8 +1038,6 @@ export function InnerSettings({ onSave }: IInnerSettingsProps) {
             setPrevValues(values)
         }
     }, [prevValues, values])
-
-      
 
     const isDesktopApp = utils.isDesktopApp()
     const isMacOS = navigator.userAgent.includes('Mac OS X')
